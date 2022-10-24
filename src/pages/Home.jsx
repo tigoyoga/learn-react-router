@@ -7,7 +7,7 @@ export default function Home() {
       <h1 className='text-3xl font-semibold text-center'>Home</h1>
       <div className=' flex gap-8 justify-center'>
         <Link to='/about'>About</Link>
-        <Link to='/contact'>Contact</Link>
+        <Link to='/contacts'>Contacts</Link>
       </div>
     </div>
   );
