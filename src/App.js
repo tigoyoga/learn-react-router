@@ -1,31 +1,27 @@
-import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
-import Contacts from "./pages/Contacts";
-import Contact from "./pages/Contact";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
 import NotFound from "./pages/NotFound";
-import NewContact from "./pages/NewContact";
-import ContactLayout from "./ContactLayout";
+import Pokemons from "./pages/Pokemons";
+import SinglePokemon from "./pages/SinglePokemon";
 
-function App() {
+export default function App() {
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/about' element={<About />} />
-
-      {/* nested route */}
-      <Route path='/contacts' element={<ContactLayout />}>
-        <Route index element={<Contacts />} />
-        <Route path=':id' element={<Contact />} />
-        <Route path='new' element={<NewContact />} />
-      </Route>
-
-      {/* <Route path='/contacts' element={<Contacts />} />
-      <Route path='/contacts/:id' element={<Contact />} />
-      <Route path='/contact/new' element={<NewContact />} /> */}
-      <Route path='*' element={<NotFound />} />
-    </Routes>
+    <>
+      <BrowserRouter className=''>
+        {/* Nested Route because we use Shared Layout */}
+        <Routes>
+          <Route path='/' element={<Navbar />}>
+            <Route index element={<Home />} />
+            <Route path='about' element={<About />} />
+            <Route path='pokemons' element={<Pokemons />} />
+            <Route path='pokemons/:name' element={<SinglePokemon />} />
+            <Route path='*' element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
-
-export default App;
