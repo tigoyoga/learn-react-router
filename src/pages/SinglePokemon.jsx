@@ -17,11 +17,17 @@ export default function SinglePokemon() {
 
   return (
     <div className='flex flex-col justify-center items-center mt-16'>
-      <img
-        className='w-96'
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
-        alt={`pokemon ${name}`}
-      />
+      <div className='w-96 h-96'>
+        {id ? (
+          <img
+            className='w-full'
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+            alt={`pokemon ${name}`}
+          />
+        ) : (
+          <div class='w-full bg-gray-300 h-full rounded-full animate-pulse'></div>
+        )}
+      </div>
       <h1>{name}</h1>
       <Link to={"/pokemons"}>back</Link>
     </div>
